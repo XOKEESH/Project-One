@@ -6,7 +6,7 @@ header {
     flex: 0 0 40%;
     height: 500px;
     background-color: #f9f9f9;
-    background-image: url('Cheers One.png');
+    background-image: url('Images/Cheers One.png');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -31,13 +31,19 @@ header {
     padding: 1rem;
     line-height: 1px;
 }
+.right-box h1 {
+    font-size: 80px;
+}
+.right-box p {
+    font-size: 22px;
+}
 #search {
-    padding: 10px;
+    padding: 10px 90px;
     margin: 10px auto;
 }
 .how-to-get-saucy {
     padding: 2rem;
-    background-color: #f9f9f9; 
+    background-color: white; 
     text-align: center;
 }
 
@@ -45,6 +51,7 @@ header {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: black; 
+    padding: 10px;
 }
 
 .saucy-steps {
@@ -52,7 +59,9 @@ header {
     justify-content: space-evenly; 
     flex-wrap: wrap;
 }
-
+.icon {
+    width: 80px;
+}
 .step {
     flex: 1 1 30%; 
     max-width: 300px;
@@ -63,7 +72,7 @@ header {
 }
 
 .step h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #333;
 }

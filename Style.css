@@ -1,0 +1,73 @@
+header {
+    display: flex;
+    width: 100%;
+}
+.left-box {
+    flex: 0 0 40%;
+    height: 500px;
+    background-color: #f9f9f9;
+    background-image: url('Cheers One.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 1rem;
+}
+.logo {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    top: 1px;
+    left: 2rem;
+}
+.right-box {
+    flex: 0 0 60%;
+    height: 500px;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    line-height: 1px;
+}
+#search {
+    padding: 10px;
+    margin: 10px auto;
+}
+.how-to-get-saucy {
+    padding: 2rem;
+    background-color: #f9f9f9; 
+    text-align: center;
+}
+
+.how-to-get-saucy h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: black; 
+}
+
+.saucy-steps {
+    display: flex;
+    justify-content: space-evenly; 
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1 1 30%; 
+    max-width: 300px;
+    min-width: 250px;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: white;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.step p {
+    color: #555;
+}

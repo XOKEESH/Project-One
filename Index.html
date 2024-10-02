@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer src=>"Script.js"</script>
+    <script defer src="Script.js"></script>
     <link rel="stylesheet" href="Style.css">
     <title>Saucy</title>
 </head>
@@ -21,10 +21,35 @@
     <div class="right-box">
         <h1>Lets's shake things up.</h1>
         <p>Find your new favorite cocktail.</p>
-        <input type="text" id="search" placeholder="Search for a cocktail...">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for a cocktail...">
             <button id="search-btn">Search</button>
+        </div>
     </div>
 </header>
+
+<section id="results" class="hidden">
+    
+    <div id="drink-list">
+        <!-- Drink cards will be here -->
+    </div>
+    
+    <div id="drink-details" class="hidden">
+        <div class="drink-details-container">
+            <img id="drink-image" src="">
+            <div class="drink-details">
+                <h2 id="drink-name"></h2>
+                <p id="drink-type">Type: </p>
+                <p id="drink-glass">Glass: </p>
+                <h3>Ingredients:</h3>
+                <ul id="drink-ingredients"></ul>
+                <h3>Instructions:</h3>
+                <p id="drink-instructions"></p>
+            </div>
+        </div>
+        <button id="close-details-btn">Close</button>
+    </div>
+</section>
 
     <section class="how-to-get-saucy">
         <h2>How to Get Saucy</h2>
@@ -37,7 +62,7 @@
             <div class="step">
                 <img src="Images/Saucy Droplet One.png" class="icon">
                 <h3>Ready in a Flash</h3>
-                <p>Mix up your favorite drinks in no time—no bartending degree required!</p>
+                <p>Mix up your favorite drinks in no time—no bartending training required!</p>
             </div>
             <div class="step">
                 <img src="Images/Saucy Droplet Two.png" class="icon">
@@ -47,7 +72,33 @@
         </div>
     </section>
 
-</body>
+    <section class="spirit-buttons">
+        <h2>Search by Spirit</h2>
+        <div class="button-container">
+            <div class="spirit-button"><img src="Images/5.png" alt="Tequila"><span>Tequila</span></div>
+            <div class="spirit-button"><img src="Images/8.png" alt="Whiskey"><span>Whiskey</span></div>
+            <div class="spirit-button"><img src="Images/7.png" alt="Rum"><span>Rum</span></div>
+            <div class="spirit-button"><img src="Images/10.png" alt="Bourbon"><span>Bourbon</span></div>
+            <div class="spirit-button"><img src="Images/11.png" alt="Gin"><span>Gin</span></div>
+            <div class="spirit-button"><img src="Images/6.png" alt="Vodka"><span>Vodka</span></div>
+        </div>
+    </section>
 
+    <section class="saucy-quiz">
+        <h2>Feeling Indecisive?</h2>
+        <p>Take a short quiz help you find your perfect match!</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Saucy. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
 
 </html>

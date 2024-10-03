@@ -143,8 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 spiritDrinkList.innerHTML = ''
 
                 if (data.drinks) {
+                    console.log(data.drinks)
                     data.drinks.forEach(drink => {
+                        console.log(drink)
                         const mainSpirit = getMainSpirit(drink)
+                        console.log(`Main Spirit: ${mainSpirit}`)
                         const drinkCard = document.createElement('div')
                         drinkCard.classList.add('drink-card')
                         drinkCard.innerHTML = `

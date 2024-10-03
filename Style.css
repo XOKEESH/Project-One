@@ -29,30 +29,33 @@ header {
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    line-height: 1px;
+    line-height: .5px;
 }
 .right-box h1 {
     font-size: 80px;
+    color: #c2873a
 }
 .right-box p {
     font-size: 22px;
+    color: #f7ede3;
+    margin-top: 60px;
 }
 .search-container {
     display: flex;
     flex-direction: row;
 }
 #search {
-    padding: 10px;
+    padding: 10px 30px;
     margin: 0;
-    border: 1px solid #ccc;
+    border: 4px solid white;
     border-radius: 4px 0 4px 4px;
 }
 #search-btn {
-    background-color: darkolivegreen;
+    background-color: #4a482c;
     padding: 10px 15px;
     color: white;
     cursor: pointer;
-    border: 1px;
+    border: 4px;
     border-radius: 4px 4px 4px 0;
     margin-left: 0;
 }
@@ -106,7 +109,7 @@ header {
     line-height: .4rem;
 }
 .view-details-btn {
-    background-color: darkolivegreen;
+    background-color: #4a482c;
     color: white;
     padding: 8px 12px;
     border: none;
@@ -142,7 +145,7 @@ header {
 .drink-details h2 {
     font-size: 2rem; 
     margin-bottom: 0.5rem; 
-    color: darkolivegreen;
+    color: #4a482c;
 }
 
 .drink-details p {
@@ -169,7 +172,7 @@ header {
 #close-details-btn {
     margin-top: 20px;
     padding: 10px 20px; 
-    background-color: darkorange; 
+    background-color: #c2873a; 
     color: white; 
     border: none; 
     border-radius: 5px; 
@@ -177,7 +180,7 @@ header {
 }
 
 #close-details-btn:hover {
-    background-color: orangered;
+    background-color: #ec9c7c;
 }
 .how-to-get-saucy {
     padding: 2rem;
@@ -185,9 +188,9 @@ header {
     text-align: center;
 }
 .how-to-get-saucy h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: black; 
+    color: #3e240f; 
     padding: 10px;
 }
 .saucy-steps {
@@ -217,12 +220,13 @@ header {
 .spirit-buttons {
     padding: 4rem 10rem;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #e4e4e0;
 }
 
 .spirit-buttons h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    color: #3e240f;
 }
 
 .button-container {
@@ -265,7 +269,7 @@ header {
     max-height: 600px;
 }
 .view-spirit-details-btn {
-    background-color: darkolivegreen;
+    background-color: #4a482c;
     color: white;
     padding: 8px 12px;
     border: none;
@@ -327,43 +331,59 @@ header {
 #close-spirit-details-btn {
     margin-top: 20px;
     padding: 10px 20px; 
-    background-color: darkorange; 
+    background-color: #c2873a; 
     color: white; 
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
 }
-
+#close-spirit-details-btn:hover {
+    background-color: #ec9c7c;
+}
 .saucy-quiz {
-    padding: 2rem;
+    padding: 6rem;
     background-color: white; 
     text-align: center;
 }
 .saucy-quiz h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: black; 
+    color: #3e240f; 
     padding: 1rem;
 }
+.saucy-quiz p {
+    color: #333; 
+    font-size: 1.3rem;
+}
+
 .footer {
     background-color: black; /* Dark background */
     color: white; /* White text */
-    padding: 1rem; /* Padding around the footer */
+    padding: 3rem;
     text-align: center; /* Center the content */
 }
 
 .footer-content {
     max-width: 1200px; /* Limit width */
+    height: 100%;
     margin: 0 auto; /* Center the content */
 }
-
+.footer-content p {
+    display: flex; 
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items: flex-end;
+    margin: 15px 0;
+}
 .footer-links {
     list-style: none; /* Remove bullets from list */
     padding: 0; /* Remove default padding */
 }
 
 .footer-links li {
-    display: inline; /* Display links in a row */
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-end;
     margin: 0 15px; /* Space between links */
 }
 

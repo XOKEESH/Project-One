@@ -6,7 +6,7 @@ header {
     flex: 0 0 40%;
     height: 500px;
     background-color: #f9f9f9;
-    background-image: url('Images/Close Up.png');
+    background-image: url('Images/Header Img Right.png');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -255,6 +255,14 @@ header {
 }
 .spirit-button:hover img {
     transform: scale(1.05);
+}
+#spirit-drink-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    margin: 10px;
+    max-height: 600px;
 }
 .saucy-quiz {
     padding: 2rem;

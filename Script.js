@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const knownSpirits = ['Tequila', 'Vodka', 'Gin', 'Bourbon', 'Whiskey', 'Rum', 'Mezcal', 'Brandy']
 
+    // Search for cocktails
     document.getElementById('search-btn').addEventListener('click', function() {
         const searchTerm = document.getElementById('search').value
 
@@ -11,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const resultsContainer = document.getElementById('results')
                     const drinkList = document.getElementById('drink-list')
                     const drinkDetails = document.getElementById('drink-details')
-
-                    console.log('Drink List Element:', drinkList);
-                    console.log('Drink Details Element:', drinkDetails)
-
 
                     drinkList.innerHTML = ''
                     drinkDetails.classList.add('hidden')
@@ -42,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailButtons.forEach(button => {
                                 button.addEventListener('click', () => {
                                     const drinkId = button.getAttribute('data-drink-id')
-                                    const selectedDrink = data.drinks.find(d => d.idDrink === drinkId)
-                                    displaySingleDrink(selectedDrink)
+                                    fetchDrinkDetails(drinkId)  // Fetch full drink details on click
                                 })
                             })
                         }
@@ -61,36 +57,36 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Please enter a cocktail name.')
         }
     })
-   
+
     document.getElementById('close-details-btn').addEventListener('click', function() {
         const drinkDetails = document.getElementById('drink-details')
         drinkDetails.classList.add('hidden')
     })
-   
-    // Function: full details for a single drink
+
+    // Function to display single drink details
     function displaySingleDrink(drink) {
-        const drinkDetails = document.getElementById('drink-details');
-        const drinkList = document.getElementById('drink-list'); // Get the drink list
-        const drinkName = document.getElementById('drink-name');
-        const drinkImage = document.getElementById('drink-image');
-        const drinkType = document.getElementById('drink-type');
-        const drinkGlass = document.getElementById('drink-glass');
-        const drinkIngredients = document.getElementById('drink-ingredients');
-        const drinkInstructions = document.getElementById('drink-instructions');
-    
-        drinkDetails.classList.remove('hidden'); // Show drink details
+        const drinkDetails = document.getElementById('drink-details')
+        const drinkList = document.getElementById('drink-list')
+        const drinkName = document.getElementById('drink-name')
+        const drinkImage = document.getElementById('drink-image')
+        const drinkType = document.getElementById('drink-type')
+        const drinkGlass = document.getElementById('drink-glass')
+        const drinkIngredients = document.getElementById('drink-ingredients')
+        const drinkInstructions = document.getElementById('drink-instructions')
+
+        drinkDetails.classList.remove('hidden')
         drinkList.innerHTML = ''
-        drinkList.classList.add('hidden'); // Hide the drink list
-    
-        drinkName.textContent = drink.strDrink;
-        drinkImage.src = drink.strDrinkThumb;
-        drinkType.textContent = `Type: ${drink.strAlcoholic}`;
-        drinkGlass.textContent = `Glass: ${drink.strGlass}`;
-        drinkIngredients.innerHTML = getIngredients(drink);
-        drinkInstructions.textContent = drink.strInstructions;
+        drinkList.classList.add('hidden')
+
+        drinkName.textContent = drink.strDrink
+        drinkImage.src = drink.strDrinkThumb
+        drinkType.textContent = `Type: ${drink.strAlcoholic || 'N/A'}`
+        drinkGlass.textContent = `Glass: ${drink.strGlass || 'N/A'}`
+        drinkIngredients.innerHTML = getIngredients(drink)
+        drinkInstructions.textContent = drink.strInstructions || 'No instructions available.'
     }
 
-    // Function: get main spirit from ingredients
+    // Function to get main spirit from ingredients
     function getMainSpirit(drink) {
         for (let i = 1; i <= 15; i++) {
             const ingredient = drink[`strIngredient${i}`]
@@ -101,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return null
     }
 
-    // Function: ingredients for a single drink
+    // Function to get ingredients list
     function getIngredients(drink) {
         let ingredientsList = ''
         for (let i = 1; i <= 15; i++) {
@@ -113,4 +109,117 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return ingredientsList
     }
+
+    // Fetch drink details
+    function fetchDrinkDetails(drinkId) {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+            .then(response => response.json())
+            .then(data => {
+                const drink = data.drinks[0]
+                displaySingleDrink(drink)  // For regular drinks
+            })
+            .catch(error => {
+                console.error('Error fetching drink details:', error)
+                alert('Error fetching drink details. Please try again.')
+            })
+    }
+
+    // Spirit Buttons
+    const spiritButtons = document.querySelectorAll('.spirit-button')
+
+    spiritButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const spiritName = button.querySelector('span').textContent
+            fetchSpirits(spiritName)
+        })
+    })
+
+    function fetchSpirits(spirit) {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
+            .then(response => response.json())
+            .then(data => {
+                const spiritResultsContainer = document.getElementById('spirit-results')
+                const spiritDrinkList = document.getElementById('spirit-drink-list')
+                spiritDrinkList.innerHTML = ''
+
+                if (data.drinks) {
+                    data.drinks.forEach(drink => {
+                        const mainSpirit = getMainSpirit(drink)
+                        const drinkCard = document.createElement('div')
+                        drinkCard.classList.add('drink-card')
+                        drinkCard.innerHTML = `
+                            <h3>${drink.strDrink}</h3>
+                            <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
+                            <p>Type: ${drink.strAlcoholic || 'N/A'}</p>
+                            <p>Main Spirit: ${mainSpirit || 'N/A'}</p>
+                            <button class="view-spirit-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>
+                        `
+                        spiritDrinkList.appendChild(drinkCard)
+                    })
+
+                    // Show the results section
+                    spiritResultsContainer.classList.remove('hidden')
+
+                    // Add event listeners to the new buttons
+                    const detailButtons = spiritDrinkList.querySelectorAll('.view-spirit-details-btn')
+                    detailButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const drinkId = button.getAttribute('data-drink-id')
+                            fetchSpiritDrinkDetails(drinkId)  // New function for spirit drinks
+                        })
+                    })
+                } else {
+                    spiritDrinkList.innerHTML = '<p>No results found.</p>'
+                    spiritResultsContainer.classList.remove('hidden')
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+                alert('Error fetching data. Please try again.')
+            })
+    }
+
+    // Fetch spirit drink details
+    function fetchSpiritDrinkDetails(drinkId) {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+            .then(response => response.json())
+            .then(data => {
+                const drink = data.drinks[0]
+                displaySingleSpiritDrink(drink)  // Pass to the new display function
+            })
+            .catch(error => {
+                console.error('Error fetching spirit drink details:', error)
+                alert('Error fetching spirit drink details. Please try again.')
+            })
+    }
+
+    // Display details for spirit drinks
+    function displaySingleSpiritDrink(drink) {
+        const spiritDrinkDetails = document.getElementById('spirit-drink-details')
+        const spiritDrinkList = document.getElementById('spirit-drink-list')
+        const spiritDrinkName = document.getElementById('spirit-drink-name')
+        const spiritDrinkImage = document.getElementById('spirit-drink-image')
+        const spiritDrinkType = document.getElementById('spirit-drink-type')
+        const spiritDrinkGlass = document.getElementById('spirit-drink-glass')
+        const spiritDrinkIngredients = document.getElementById('spirit-drink-ingredients')
+        const spiritDrinkInstructions = document.getElementById('spirit-drink-instructions')
+
+        spiritDrinkDetails.classList.remove('hidden')
+        spiritDrinkList.innerHTML = ''
+        spiritDrinkList.classList.add('hidden')
+
+        spiritDrinkName.textContent = drink.strDrink
+        spiritDrinkImage.src = drink.strDrinkThumb
+        spiritDrinkType.textContent = `Type: ${drink.strAlcoholic || 'N/A'}`
+        spiritDrinkGlass.textContent = `Glass: ${drink.strGlass || 'N/A'}`
+        spiritDrinkIngredients.innerHTML = getIngredients(drink)
+        spiritDrinkInstructions.textContent = drink.strInstructions || 'No instructions available.'
+    }
+
+    // Close button for spirit drink details
+    document.getElementById('close-spirit-details-btn').addEventListener('click', function() {
+        const spiritDrinkDetails = document.getElementById('spirit-drink-details')
+        spiritDrinkDetails.classList.add('hidden')
+    })
 })
+

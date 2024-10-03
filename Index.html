@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,6 +80,28 @@
             <div class="spirit-button"><img src="Images/10.png" alt="Bourbon"><span>Bourbon</span></div>
             <div class="spirit-button"><img src="Images/11.png" alt="Gin"><span>Gin</span></div>
             <div class="spirit-button"><img src="Images/6.png" alt="Vodka"><span>Vodka</span></div>
+        </div>
+    </section>
+
+    <section id="spirit-results" class="hidden">
+        <div id="spirit-drink-list">
+            <!-- Spirit drink cards will be here -->
+        </div>
+    
+        <div id="spirit-drink-details" class="hidden">
+            <div class="spirit-drink-details-container">
+                <img id="spirit-drink-image" src="" alt="Spirit Drink Image">
+                <div class="drink-details">
+                    <h2 id="spirit-drink-name"></h2>
+                    <p id="spirit-drink-type">Type: </p>
+                    <p id="spirit-drink-glass">Glass: </p>
+                    <h3>Ingredients:</h3>
+                    <ul id="spirit-drink-ingredients"></ul>
+                    <h3>Instructions:</h3>
+                    <p id="spirit-drink-instructions"></p>
+                </div>
+            </div>
+            <button id="close-spirit-details-btn">Close</button>
         </div>
     </section>
 

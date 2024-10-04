@@ -39,22 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailButtons.forEach(button => {
                                 button.addEventListener('click', () => {
                                     const drinkId = button.getAttribute('data-drink-id')
-                                    fetchDrinkDetails(drinkId)  // Fetch full drink details on click
+                                    fetchDrinkDetails(drinkId) 
                                 })
                             })
                         }
                         resultsContainer.classList.remove('hidden')
                     } else {
-                        drinkList.innerHTML = '<p>No results found.</p>'
+                        drinkList.innerHTML = '<p>Looks like the cocktail cabinet is empty. Lets find something else!</p>'
                         resultsContainer.classList.remove('hidden')
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error)
-                    alert('Error fetching data. Please try again.')
+                    alert('The drink data is feeling a little shy. Lets try again!')
                 })
         } else {
-            alert('Please enter a cocktail name.')
+            alert('Oops! We need a cocktail name to get the party started!')
         }
     })
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error fetching drink details:', error)
-                alert('Error fetching drink details. Please try again.')
+                alert('Oops! The details are still mixing. Give it another shot!')
             })
     }
 
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Show the results section
                     spiritResultsContainer.classList.remove('hidden')
 
-                    // Add event listeners to the new buttons
+                    // Add event listeners to the spirit view specs button
                     const detailButtons = spiritDrinkList.querySelectorAll('.view-spirit-details-btn')
                     detailButtons.forEach(button => {
                         button.addEventListener('click', () => {
@@ -177,8 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => {
-                console.error('Error fetching data:', error)
-                alert('Error fetching data. Please try again.')
+                alert('The drink data is feeling a little shy. Lets try again!')
             })
     }
 
@@ -188,11 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const drink = data.drinks[0]
-                displaySingleSpiritDrink(drink)  // Pass to the new display function
+                displaySingleSpiritDrink(drink)  // sends to new display function
             })
             .catch(error => {
                 console.error('Error fetching spirit drink details:', error)
-                alert('Error fetching spirit drink details. Please try again.')
+                alert('Uh-oh! It looks like the specs for this drink are taking a break.')
             })
     }
 

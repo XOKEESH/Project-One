@@ -1,3 +1,5 @@
+<img src="Images/Concept Saucy..png">
+
 ## Project Summary
 Saucy is a responsive web application designed to help users discover and create cocktails based on their preferences. Utilizing a cocktail API, the site offers a user-friendly interface to search for cocktail recipes, find drinks by ingredient, and explore personalized cocktail suggestions for various occasions.
 

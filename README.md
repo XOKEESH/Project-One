@@ -1,4 +1,4 @@
-<img src="Images/Concept Saucy..png">
+<img src="Images/saucygithubbanner.png">
 
 ## Project Summary
 Saucy is a responsive web application designed to help users discover and create cocktails using recipes found in the platform. By utilizing a cocktail API, Saucy offers an intuitive interface for users to search for cocktail recipes, find drinks by spirit, and explore cocktail suggestions from our randomizer.
@@ -16,7 +16,6 @@ Saucy is a responsive web application designed to help users discover and create
 
 ### Live Demo
 Check out the live version of Saucy at: https://saucy.surge.sh/
-
 
 ## Stretch Goals
 1. Favorites List: Users can save their favorite cocktail recipes for easy access later. This feature uses local storage to maintain a personalized experience without requiring user accounts.

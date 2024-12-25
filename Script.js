@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (data.drinks) {
                     data.drinks.forEach(drink => {
-                        const mainSpirit = getMainSpirit(drink)
                         const drinkCard = document.createElement('div')
                         drinkCard.classList.add('drink-card')
                         drinkCard.innerHTML = 

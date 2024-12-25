@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchTerm = document.getElementById('search').value
 
         if (searchTerm) {
-            fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`)
-                .then(response => response.json())
-                .then(data => {
+            axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`)
+                .then(response => {
+                    const data = response.data
                     const resultsContainer = document.getElementById('results')
                     const drinkList = document.getElementById('drink-list')
                     const drinkDetails = document.getElementById('drink-details')
@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const mainSpirit = getMainSpirit(drink)
                                 const drinkCard = document.createElement('div')
                                 drinkCard.classList.add('drink-card')
-                                drinkCard.innerHTML = `
-                                    <h3>${drink.strDrink}</h3>
+                                drinkCard.innerHTML = 
+                                    `<h3>${drink.strDrink}</h3>
                                     <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
                                     <p>Type: ${drink.strAlcoholic}</p>
                                     <p>Main Spirit: ${mainSpirit || 'N/A'}</p>
-                                    <button class="view-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>
-                                `
+                                    <button class="view-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>`
+                                
                                 drinkList.appendChild(drinkCard)
                             })
 
@@ -86,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         drinkInstructions.textContent = drink.strInstructions || 'No instructions available.'
     }
 
+    document.querySelector('.saucy-steps').scrollTo({ left: 0, behavior: 'smooth' })
+
     // Function to get main spirit from ingredients
     function getMainSpirit(drink) {
         for (let i = 1; i <= 15; i++) {
@@ -112,11 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch drink details
     function fetchDrinkDetails(drinkId) {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
-            .then(response => response.json())
-            .then(data => {
-                const drink = data.drinks[0]
-                displaySingleDrink(drink)  // For regular drinks
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+            .then(response => {
+                const drink = response.data.drinks[0]
+                displaySingleDrink(drink)
             })
             .catch(error => {
                 console.error('Error fetching drink details:', error)
@@ -135,9 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function fetchSpirits(spirit) {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
-            .then(response => response.json())
-            .then(data => {
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${spirit}`)
+            .then(response => {
+                const data = response.data
                 const spiritResultsContainer = document.getElementById('spirit-results')
                 const spiritDrinkList = document.getElementById('spirit-drink-list')
                 spiritDrinkList.innerHTML = ''
@@ -150,13 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log(`Main Spirit: ${mainSpirit}`)
                         const drinkCard = document.createElement('div')
                         drinkCard.classList.add('drink-card')
-                        drinkCard.innerHTML = `
-                            <h3>${drink.strDrink}</h3>
+                        drinkCard.innerHTML = 
+                            `<h3>${drink.strDrink}</h3>
                             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
                             <p>Type: ${drink.strAlcoholic || 'N/A'}</p>
                             <p>Main Spirit: ${mainSpirit || 'N/A'}</p>
-                            <button class="view-spirit-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>
-                        `
+                            <button class="view-spirit-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>`
+                        
                         spiritDrinkList.appendChild(drinkCard)
                     })
 
@@ -168,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailButtons.forEach(button => {
                         button.addEventListener('click', () => {
                             const drinkId = button.getAttribute('data-drink-id')
-                            fetchSpiritDrinkDetails(drinkId)  // New function for spirit drinks
+                            fetchSpiritDrinkDetails(drinkId)
                         })
                     })
                 } else {
@@ -183,17 +184,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch spirit drink details
     function fetchSpiritDrinkDetails(drinkId) {
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
-            .then(response => response.json())
-            .then(data => {
-                const drink = data.drinks[0]
-                displaySingleSpiritDrink(drink)  // sends to new display function
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+            .then(response => {
+                const drink = response.data.drinks[0]
+                displaySingleSpiritDrink(drink)
             })
             .catch(error => {
                 console.error('Error fetching spirit drink details:', error)
                 alert('Uh-oh! It looks like the specs for this drink are taking a break.')
             })
     }
+
+    document.getElementById('close-spirit-details-btn').addEventListener('click', function() {
+        const drinkDetails = document.getElementById('spirit-drink-details')
+        drinkDetails.classList.add('hidden')
+    })
 
     // Display details for spirit drinks
     function displaySingleSpiritDrink(drink) {
@@ -217,11 +222,64 @@ document.addEventListener('DOMContentLoaded', () => {
         spiritDrinkIngredients.innerHTML = getIngredients(drink)
         spiritDrinkInstructions.textContent = drink.strInstructions || 'No instructions available.'
     }
-
-    // Close button for spirit drink details
-    document.getElementById('close-spirit-details-btn').addEventListener('click', function() {
-        const spiritDrinkDetails = document.getElementById('spirit-drink-details')
-        spiritDrinkDetails.classList.add('hidden')
-    })
 })
 
+document.getElementById('get-random-drink').addEventListener('click', fetchRandomDrink)
+
+document.getElementById('close-rec-details-btn').addEventListener('click', () => {
+  const recDrinkDetails = document.getElementById('rec-drink-details')
+  recDrinkDetails.classList.add('hidden')
+})
+
+document.getElementById('another-rec-btn').addEventListener('click', () => {
+  fetchRandomDrink()
+})
+
+// Function to fetch and display a random drink
+async function fetchRandomDrink() {
+  try {
+    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    const data = await response.json()
+    const drink = data.drinks[0]
+
+    displayRecommendedDrink(drink)
+  } catch (error) {
+    console.error('Error fetching random drink:', error)
+    document.getElementById('rec-drink-name').textContent = 'Something went wrong. Please try again!'
+  }
+}
+
+// Function to display the recommended drink
+function displayRecommendedDrink(drink) {
+  const recDrinkDetails = document.getElementById('rec-drink-details')
+  const recDrinkName = document.getElementById('rec-drink-name')
+  const recDrinkImage = document.getElementById('rec-drink-image')
+  const recDrinkType = document.getElementById('rec-drink-type')
+  const recDrinkGlass = document.getElementById('rec-drink-glass')
+  const recDrinkIngredients = document.getElementById('rec-drink-ingredients')
+  const recDrinkInstructions = document.getElementById('rec-drink-instructions')
+
+  recDrinkDetails.classList.remove('hidden')
+
+  recDrinkName.textContent = drink.strDrink
+  recDrinkImage.src = drink.strDrinkThumb
+  recDrinkType.textContent = `Type: ${drink.strAlcoholic || 'N/A'}`
+  recDrinkGlass.textContent = `Glass: ${drink.strGlass || 'N/A'}`
+  recDrinkIngredients.innerHTML = getIngredients(drink)
+  recDrinkInstructions.textContent = drink.strInstructions || 'No instructions available.'
+
+  document.getElementById('another-rec-btn').style.display = 'inline-block'
+  document.getElementById('close-rec-details-btn').style.display = 'inline-block'
+}
+
+function getIngredients(drink) {
+  let ingredients = []
+  for (let i = 1; i <= 15; i++) {
+    const ingredient = drink[`strIngredient${i}`]
+    const measure = drink[`strMeasure${i}`]
+    if (ingredient) {
+      ingredients.push(`${measure ? measure : ''} ${ingredient}`)
+    }
+  }
+  return ingredients.map(item => `<li>${item}</li>`).join('')
+}

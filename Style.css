@@ -1,63 +1,92 @@
-header {
-    display: flex;
-    width: 100%;
-}
-.left-box {
-    flex: 0 0 40%;
-    height: 500px;
-    background-color: #f9f9f9;
-    background-image: url('Images/Header Img Right.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    padding: 1rem;
-}
-.logo {
-    width: 150px;
-    height: auto;
-    position: absolute;
-    top: 1px;
-    left: 2rem;
-}
-.right-box {
-    flex: 0 0 60%;
-    height: 500px;
-    background-color: black;
-    color: white;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-.right-box h1 {
-    font-size: 80px;
-    color: #f7ede3
-}
-.right-box p {
-    font-size: 22px;
-    color: #f7ede3;
-    margin-top: 60px;
-}
-.search-container {
-    display: flex;
-    flex-direction: row;
-}
-#search {
-    padding: 10px 30px;
+    min-height: 100vh;
     margin: 0;
-    border: 4px solid white;
-    border-radius: 4px 0 4px 4px;
 }
-#search-btn {
-    background-color: #c2873a;
-    padding: 10px 15px;
-    color: black;
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    background-image: url('Images/SaucyBanner.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+header .logo {
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    width: 100px;
+    height: auto;
+    margin: 0;
+}
+header img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+header h1 {
+    font-size: 50px;
+    font-weight: 600;
+    color: #f7ede3;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+header p {
+    font-size: 18px;
     font-weight: 300;
+    color: #f7ede3;
+    margin-top: 15px;
+    line-height: 1.5;
+    text-transform: capitalize;
+}
+header .search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 4px;
+}
+header #search {
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+header #search:focus {
+    border: 2px solid #c2873a;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+header #search-btn {
+    background-color: #c2873a;
+    padding: 12px 20px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    border: 4px;
-    border-radius: 4px 4px 4px 0;
-    margin-left: 0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+header #search-btn:hover {
+    background-color: #d1a15f;
+    transform: translateY(-2px);
 }
 .hidden {
     display: none;
@@ -122,7 +151,6 @@ header {
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    max-height: 600px;
 }
 .drink-details-container {
     display: flex;
@@ -227,13 +255,15 @@ header {
 .button-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; 
 }
 .spirit-button {
     position: relative;
     flex: 1 0 30%;
     margin: 1rem;
     cursor: pointer;
+    box-sizing: border-box;
+    max-width: 30%;
 }
 .spirit-button img {
     width: 100%;
@@ -247,11 +277,25 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+.spirit-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+    z-index: 1;
 }
 .spirit-button:hover img {
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 #spirit-results {
     margin: 15px;
@@ -275,16 +319,16 @@ header {
 #spirit-drink-details {
     flex: 0 0 300px;
     background-color: black;
-    padding: 2rem; 
+    padding: 1rem; 
     border: 4px solid #ec9c7c; 
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    max-height: 600px;
 }
 .spirit-drink-details-container {
     display: flex;
-    align-items: center; 
+    align-items: center;
+    padding: 5px; 
 }
 #spirit-drink-image {
     width: 400px; 
@@ -302,7 +346,6 @@ header {
     color: #ec9c7c; 
     margin-left: 10px; 
 }
-
 .spirit-drink-details p {
     font-size: 1.1rem; 
     margin: 0.5rem 0;
@@ -338,60 +381,315 @@ header {
 #close-spirit-details-btn:hover {
     background-color: #c2873a; 
 }
-
-.saucy-quiz {
-    padding: 6rem;
+.recommendation-section {
+    padding: 1rem;
+    margin: 0;
+}
+.recommendation-container {
+    padding: 4rem;
     background-color: white; 
     text-align: center;
 }
-.saucy-quiz h2 {
+.recommendation-container h2 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
     color: #4a482c; 
-    padding: 1rem;
+    margin-bottom: 0;
 }
-.saucy-quiz p {
-    color: #333; 
-    font-size: 1.3rem;
+.recommendation-container p {
+    color: #555; 
+    font-size: 1.2rem;
+    margin-top: 0.5;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
+#get-random-drink {
+    background-color: #c2873a;
+    padding: 12px 20px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
-.footer {
+#get-random-drink:hover {
+    background-color: #d1a15f;
+    transform: translateY(-2px);
+}
+#rec-drink-details {
+    flex: 0 0 300px;
     background-color: black;
-    color: white;
-    padding: 3rem;
-    position: relative;
+    padding: 2rem; 
+    border: 4px solid #ec9c7c;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
-.footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
+.rec-drink-details-container {
+    display: flex;
+    align-items: center;
 }
-.footer-content p {
-    display: absolute; 
-    bottom: 1rem;
-    left: 1rem; 
-    margin: 0;
+#rec-drink-image {
+    width: 400px; 
+    height: auto; 
+    border-radius: 8px; 
+    margin: 20px;
+    flex-shrink: 0;
 }
-.footer-links {
-    list-style: none;
-    padding: 0;
+.rec-drink-details {
+    flex: 1; 
 }
-.footer-links li {
-    display: flex; 
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 0 15px;
-}
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.footer-links a:hover {
+.rec-drink-details h2 {
+    font-size: 2rem; 
+    margin-bottom: 0;
+    margin-left: 10px; 
     color: #ec9c7c;
 }
+.rec-drink-details p {
+    font-size: 1.1rem; 
+    margin: 0;
+    margin-left: 10px;
+    color: whitesmoke
+}
+.rec-drink-details h3 {
+    margin-top: 1.5rem; 
+    margin-left: 10px;
+    font-size: 1.5rem; 
+    color: whitesmoke; 
+}
+#rec-drink-ingredients {
+    list-style-type: none;
+    padding: 0; 
+    margin-left: 10px;
+}
+#rec-drink-ingredients li {
+    margin: 0.3rem 0; 
+    margin-left: 10px;
+    font-size: 1rem;
+    color: whitesmoke;
+}
+#close-rec-details-btn {
+    padding: 10px 20px; 
+    background-color: #ec9c7c; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+#close-rec-details-btn:hover {
+    background-color: #c2873a;
+}
+#another-rec-btn {
+    margin: 10px;
+    padding: 10px 30px; 
+    background-color: #ec9c7c; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+#another-rec-btn:hover {
+    background-color: #c2873a;
+}
+.footer {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 80px;
+    text-align: center;
+    bottom: 0;
+}
+.footer p {
+    margin: 0;
+    bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+@media screen and (max-width: 1084px) {
+    .spirit-buttons{
+        padding: 2rem 5rem;
+    }
+    .spirit-button {
+        max-width: 65%;
+    }
+.saucy-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem;
+}
+.step {
+    flex: 0 0 75%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: .5rem;
+    background-color: #fff;
+}
+.step img.icon {
+    max-width: 80px;
+    margin-bottom: 0.5rem;
+}
+.step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.step p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.saucy-steps::-webkit-scrollbar {
+    height: 4px;
+}
+.saucy-steps::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.saucy-steps::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+.saucy-quiz {
+    padding: 3rem;
+}
+}
+@media screen and (max-width: 768px) {
+header h1 {
+    font-size: 45px;
+    font-weight: 600;
+}
+.spirit-buttons {
+    padding: 2rem 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 768px;
+}
+.spirit-button {
+    max-width: 95%;
+}
+.drink-details-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+}
+#drink-image {
+    width: 250px;
+    margin-bottom: 15px;
+}
+.saucy-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem;
+}
+.step {
+    flex: 0 0 75%;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: .5rem;
+    background-color: #fff;
+}
+.step img.icon {
+    max-width: 80px;
+    margin-bottom: 0.5rem;
+}
+.step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.step p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.saucy-steps::-webkit-scrollbar {
+    height: 4px;
+}
+.saucy-steps::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.saucy-steps::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+.spirit-drink-details-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+}
+#spirit-drink-image {
+    width: 250px;
+    margin-bottom: 15px; 
+}
+}
+@media screen and (max-width: 480px) {
+.spirit-buttons {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 480px;
+    margin-top: 10px;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    max-width: 480px;
+}
+.spirit-button {
+    max-width: 95%;
+    min-width: 105px;
+}
+.spirit-button span {
+    font-size: 1.5rem;
+}
+.how-to-get-saucy h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+.saucy-steps {
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin: 10px;
+}
+.step {
+    flex: 0 0 100%;
+    padding: 0.5rem;
+}
+.step img.icon {
+    max-width: 60px;
+    margin-bottom: 0.4rem;
+}
+.step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+.step p {
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+.saucy-steps::-webkit-scrollbar {
+    height: 3px;
+}
+.spirit-buttons h2 {
+    font-size: 1.8rem;
+}
+.saucy-quiz {
+    padding: 3rem;
+}
+.saucy-quiz h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+}
+    

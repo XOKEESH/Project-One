@@ -18,12 +18,8 @@
 <body>
     
 <header>
-    <div class="left-box">
+   <div class="right-box">
         <img src="Images/New Saucy Logo.png" class="logo">
-
-    </div>
-    
-    <div class="right-box">
         <h1>Lets's shake things up.</h1>
         <p>Find your new favorite cocktail.</p>
         <div class="search-container">
@@ -61,18 +57,18 @@
         <div class="saucy-steps">
             <div class="step">
                 <img src="Images/Saucy Droplet Three.png" class="icon">
-                <h3>Discover Our Cocktail Creations</h3>
+                <h3>Sip, Savor, Repeat</h3>
                 <p>Explore fan-favorite recipes, seasonal sips, and local twists that will wow your taste buds.</p>
             </div>
             <div class="step">
                 <img src="Images/Saucy Droplet One.png" class="icon">
                 <h3>Ready in a Flash</h3>
-                <p>Mix up your favorite drinks in no time—no bartending training required!</p>
+                <p>Mix up your favorite drinks in no time — no bartending training required!</p>
             </div>
             <div class="step">
                 <img src="Images/Saucy Droplet Two.png" class="icon">
                 <h3>Raise a Glass at Home</h3>
-                <p>Gather your friends, shake things up, and let the good times roll—cheers to unforgettable nights!</p>
+                <p>Host unforgettable nights with friends and create memories that will last a lifetime!</p>
             </div>
         </div>
     </section>
@@ -80,12 +76,12 @@
     <section class="spirit-buttons">
         <h2>Choose Your Vice</h2>
         <div class="button-container">
-            <div class="spirit-button"><img src="Images/5.png"><span>Tequila</span></div>
-            <div class="spirit-button"><img src="Images/8.png"><span>Whiskey</span></div>
-            <div class="spirit-button"><img src="Images/7.png"><span>Rum</span></div>
-            <div class="spirit-button"><img src="Images/10.png"><span>Bourbon</span></div>
-            <div class="spirit-button"><img src="Images/11.png"><span>Gin</span></div>
-            <div class="spirit-button"><img src="Images/6.png"><span>Vodka</span></div>
+            <div class="spirit-button"><img src="Images/tequilabtn.png"><span>Tequila</span></div>
+            <div class="spirit-button"><img src="Images/whiskeybtn.png"><span>Whiskey</span></div>
+            <div class="spirit-button"><img src="Images/rumbtn.png"><span>Rum</span></div>
+            <div class="spirit-button"><img src="Images/bourbonbtn.png"><span>Bourbon</span></div>
+            <div class="spirit-button"><img src="Images/ginbtn.png"><span>Gin</span></div>
+            <div class="spirit-button"><img src="Images/vodkabtn.png"><span>Vodka</span></div>
         </div>
     </section>
 
@@ -111,21 +107,33 @@
         </div>
     </section>
 
-    <section class="saucy-quiz">
-        <h2>Feeling Indecisive?</h2>
-        <p>Take a short quiz help you find your perfect match!</p>
-    </section>
+    <section class="recommendation-section">
+        <div class="recommendation-container">
+            <h2>Feeling Indecisive?</h2>
+            <p>Don't worry, we've got just the thing to mix it up!</p>
+            <button id="get-random-drink">Give me a drink!</button>
+        </div>
+      
+        <div id="rec-drink-details" class="hidden">
+            <div class="rec-drink-details-container">
+                <img id="rec-drink-image" src="">
+                <div class="rec-drink-details">
+                    <h2 id="rec-drink-name"></h2>
+                    <p id="rec-drink-type">Type: </p>
+                    <p id="rec-drink-glass">Glass: </p>
+                    <h3>Ingredients:</h3>
+                    <ul id="rec-drink-ingredients"></ul>
+                    <h3>Instructions:</h3>
+                    <p id="rec-drink-instructions"></p>
+                </div>
+            </div>
+            <button id="another-rec-btn">Try Again</button>
+            <button id="close-rec-details-btn">Close</button>
+        </div>
+    </section>  
 
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Saucy. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Privacy Policy</a></li>
-            </ul>
-        </div>
+        <p>&copy; 2024 Saucy. All rights reserved.</p>
     </footer>
 </body>
-
 </html>

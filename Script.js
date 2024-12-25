@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 15; i++) {
             const ingredient = drink[`strIngredient${i}`]
             if (ingredient && knownSpirits.includes(ingredient)) {
+                ('Main Spirit Found:', ingredient);
                 return ingredient
             }
         }
@@ -144,18 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 spiritDrinkList.innerHTML = ''
 
                 if (data.drinks) {
-                    console.log(data.drinks)
                     data.drinks.forEach(drink => {
-                        console.log(drink)
                         const mainSpirit = getMainSpirit(drink)
-                        console.log(`Main Spirit: ${mainSpirit}`)
                         const drinkCard = document.createElement('div')
                         drinkCard.classList.add('drink-card')
                         drinkCard.innerHTML = 
                             `<h3>${drink.strDrink}</h3>
                             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}">
-                            <p>Type: ${drink.strAlcoholic || 'N/A'}</p>
-                            <p>Main Spirit: ${mainSpirit || 'N/A'}</p>
                             <button class="view-spirit-details-btn" data-drink-id="${drink.idDrink}">View Specs</button>`
                         
                         spiritDrinkList.appendChild(drinkCard)

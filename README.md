@@ -26,7 +26,7 @@ Check out the live version of Saucy at: https://saucy.surge.sh/
 ![search for Gimlet](Images/search-gimlet.png)
 
 ### Search By Name | Gimlet Result
-![search for Gimlet result](Images/searchresults-gimlet.png)
+![search for Gimlet result](Images/searchresult-gimlet.png)
 
 ### Search For Martini
 ![search for Martini](Images/searchfor-martini.png)

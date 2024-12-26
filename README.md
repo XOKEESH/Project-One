@@ -22,3 +22,29 @@ Check out the live version of Saucy at: https://saucy.surge.sh/
 
 2. Search by Ingredient: A feature to search for cocktails based on ingredients the user has at home, expanding the flexibility of the recipe finder.
 
+### Search By Name
+![search for Gimlet](Images/search-gimlet.png)
+
+### Search By Name | Gimlet Result
+![search for Gimlet result](Images/searchresults-gimlet.png)
+
+### Search For Martini
+![search for Martini](Images/searchfor-martini.png)
+
+### Search For Martini | Martini Results
+![search for martini results](Images/search-martini.png)
+
+### Search By Spirit
+![search by Spirit](Images/search-by-spirit.png)
+
+### Search By Spirit | Gin Results
+![search by Spirit Gin results](Images/sbs-gin.png)
+
+### Recipe Randomizer
+![photo of randomizer section](Images/randomsection.png)
+
+### Recipe Randomizer | Blueberry Mojito
+![photo of randomizer result one](Images/random-blueberrymojito.png)
+
+### Recipe Randomizer | Rum Cobbler
+![photo of randomizer result two](Images/random-rumcobbler.png)
